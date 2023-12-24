@@ -11,3 +11,9 @@
       register: out
     - debug: var=out.stdout_lines
 
+    - name: create self signed cert
+      command: >
+        openssl req -new -x509 -keyout /etc/lighttpd/certs/lighttpd.pem -out /etc/lighttpd/certs/lighttpd.pem -days 365 -nodes
+        creates=/etc/lighttpd/certs/lighttpd.pem
+      register: out
+    - debug: var=out.stdout_lines
