@@ -17,3 +17,13 @@
         creates=/etc/lighttpd/certs/lighttpd.pem
       register: out
     - debug: var=out.stdout_lines
+
+    - name: ensure lightttpd ssl config exists
+      copy:
+        src: lighttpd.conf
+        dest: /etc/lighttpd/lighttpd.conf
+        owner: root
+        group: root
+        mode: 0644
+      register: out
+    - debug: var=out.stdout_lines
