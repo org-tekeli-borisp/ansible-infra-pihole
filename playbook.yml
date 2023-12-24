@@ -8,4 +8,6 @@
         owner: root
         group: root
         mode: 0644
+      register: out
+    - debug: var=out.stdout_lines
 
