@@ -1,0 +1,11 @@
+---
+- hosts: dns
+  tasks:
+    - name: ensure /etc/lighttpd/certs exists
+      file:
+        path: /etc/lighttpd/certs
+        state: directory
+        owner: root
+        group: root
+        mode: 0644
+
