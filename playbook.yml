@@ -1,6 +1,13 @@
 ---
 - hosts: dns
   tasks:
+    - name: Ensure lighttpd-mod-openssl installed
+      ansible.builtin.package:
+        name: lighttpd-mod-openssl
+        state: present
+      register: out
+    - debug: var=out.stdout_lines
+
     - name: ensure /etc/lighttpd/certs exists
       file:
         path: /etc/lighttpd/certs
