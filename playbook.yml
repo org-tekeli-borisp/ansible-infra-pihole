@@ -33,4 +33,12 @@
         group: root
         mode: 0644
       register: out
+      notify:
+        - restart lighttpd
     - debug: var=out.stdout_lines
+
+  handlers:
+    - name: restart lighttpd
+      service:
+        name: lighttpd
+        state: restarted
