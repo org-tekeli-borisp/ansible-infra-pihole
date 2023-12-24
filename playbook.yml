@@ -20,8 +20,8 @@
 
     - name: create self signed cert
       command: >
-        openssl req -new -x509 -keyout /etc/lighttpd/certs/lighttpd.pem -out /etc/lighttpd/certs/lighttpd.pem -days 365 -nodes
-        creates=/etc/lighttpd/certs/lighttpd.pem
+        openssl req -x509 -nodes -subj '/CN={{ ansible_host }}' -days 365 -newkey rsa:4096 -sha256 -keyout /etc/lighttpd/certs/server.key -out /etc/lighttpd/certs/server.crt
+        creates=/etc/lighttpd/certs/server.crt
       register: out
     - debug: var=out.stdout_lines
 
